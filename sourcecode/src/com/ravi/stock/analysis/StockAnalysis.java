@@ -18,7 +18,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 public class StockAnalysis {
 
 	public static void main(String[] args) {
-		String excelFilePath = "D:\\stocks\\INFY.NS.xls";
+		String excelFilePath = "D:\\stocks\\SBIN.NS.xls";
 		FileInputStream inputStream;
 		Workbook workbook = null;
 		try {
@@ -68,8 +68,16 @@ public class StockAnalysis {
 //			System.out.println(stockLowPrice);
 //			System.out.println(stockClosePrice);
 //			System.out.println(stockVolume);
-			System.out.println(StockUtils.getStockHighPercentage(stockOpenPrice, stockHighPrice,dateList));
-			System.out.println(StockUtils.getStockLowPercentage(stockOpenPrice, stockLowPrice,dateList));
+			
+//			System.out.println(StockUtils.getStockHighPercentage(stockOpenPrice, stockHighPrice,dateList));
+//			System.out.println(StockUtils.getStockLowPercentage(stockOpenPrice, stockLowPrice,dateList));
+			System.out.println("Stock buying price: "+stockClosePrice.get(0));
+			System.out.println("Higest closing price: "+StockUtils.getHighestClosingPrice(stockClosePrice));
+			System.out.println("Higest high price: "+StockUtils.getHighestHighPrice(stockHighPrice));
+			System.out.println("Avg of high prices: "+StockUtils.getAverageHighPrice(stockHighPrice));
+			System.out.println("Percentage of profit or loss at highest closing price: "+ StockUtils.getProfitOrLossPercentage(stockClosePrice.get(0), StockUtils.getHighestClosingPrice(stockClosePrice)));
+			System.out.println("Percentage of profit or loss at highest high price: "+ StockUtils.getProfitOrLossPercentage(stockClosePrice.get(0), StockUtils.getHighestHighPrice(stockHighPrice)));
+			System.out.println("Percentage of profit or loss at avg of high prices: "+ StockUtils.getProfitOrLossPercentage(stockClosePrice.get(0), StockUtils.getAverageHighPrice(stockHighPrice)));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
