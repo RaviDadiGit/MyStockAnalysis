@@ -52,7 +52,11 @@ public class StockUtils {
 	}
 	public static Double getProfitOrLossPercentage(Double buyingPrice,Double sellingPrice){		
 		
-			 return ((sellingPrice/buyingPrice)*100)-100;
+			 //return ((sellingPrice/buyingPrice)*100)-100;
+		return sellingPrice-buyingPrice;
 		
+	}
+	public static Double calcFinalPriceOfStock(Double buyingPrice,Double numOfStocks,Double profitOrLoss){
+		return (buyingPrice*numOfStocks)+(profitOrLoss*numOfStocks);
 	}
 }
